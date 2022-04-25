@@ -1,0 +1,25 @@
+.todo{
+    width: 90%;
+    margin: -6rem auto;
+    color: var(--lightTheme-dark-gray-blue);
+    &__list, &__creator, &__filter{
+        background-color: white;
+        border-radius: 5px;
+        box-shadow: 0 1px 20px rgb(0 0 0 / 16%);
+    }
+
+    &__creator{
+        margin-bottom: 1rem;
+        display: flex;
+        padding: 1rem;
+        input[type=text]{
+            display: none;
+        }
+    }
+
+    &__task{
+        padding: 1rem;
+        display: flex;
+        border-bottom: 1px solid var(--lightTheme-light-gray-blue);
+    }
+}

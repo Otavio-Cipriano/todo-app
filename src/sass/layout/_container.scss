@@ -1,0 +1,6 @@
+@use '../abstracts/' as *;
+
+.container{
+    max-width: $desktop;
+    padding: 0 1.5rem;
+}
