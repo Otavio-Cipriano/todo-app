@@ -7,10 +7,10 @@ module.exports = {
         index: './src/index.js'
     },
     output: {
-        filename: '[main].[contenthash].js',
+        filename: '[name].[contenthash].js',
         path: path.resolve(__dirname, 'dist'),
         clean: true,
-        assetModuleFilename: '[name][ext]'
+        assetModuleFilename: 'assets/[name].[contenthash].[ext]'
     },
     devtool: 'source-map',
     devServer: {

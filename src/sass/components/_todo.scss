@@ -2,6 +2,8 @@
     width: 90%;
     margin: -6rem auto;
     color: var(--lightTheme-dark-gray-blue);
+    font-size: 0.95rem;
+
     &__list, &__creator, &__filter{
         background-color: white;
         border-radius: 5px;
@@ -17,9 +19,16 @@
         }
     }
 
-    &__task{
+    .task{
         padding: 1rem;
         display: flex;
         border-bottom: 1px solid var(--lightTheme-light-gray-blue);
+        align-items: center;
+
+        &__text{
+            width: 100%;
+        }
     }
+
+    
 }
