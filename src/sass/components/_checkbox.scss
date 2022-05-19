@@ -11,9 +11,6 @@
     user-select: none;
     margin-top: -13px;
 
-    &:hover input ~ &__checkmark{
-        background-color: #ccc;
-    }
 
     input{
         position: absolute;
@@ -24,7 +21,7 @@
     }
 
     input:checked ~ &__checkmark{
-        background-color: #2196F3;
+        background: #2196F3;
 
         &::after{
             display: block;
@@ -37,7 +34,8 @@
         left: 0;
         height: 25px;
         width: 25px;
-        background-color: #eee;
+        // background-color: #eee;
+        border: var(--lightTheme-light-gray-blue) solid 1px;
         border-radius: 50%;
 
         &::after{
@@ -45,7 +43,7 @@
             position: absolute;
             display: none;
             left: 9px;
-            top: 5px;
+            top: 6px;
             width: 5px;
             height: 10px;
             border: solid white;
