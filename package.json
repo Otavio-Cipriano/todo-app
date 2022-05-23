@@ -5,7 +5,7 @@
   "author": "Otávio Cipriano <otavio.b.cipriano@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "webpack serve --open",
+    "dev": "webpack serve",
     "build": "webpack"
   },
   "devDependencies": {
