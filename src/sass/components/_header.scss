@@ -1,5 +1,5 @@
 .header{
-    background-image: url('../assets/bg-mobile-light.jpg');
+    background-image: url('../../../public/assets/bg-mobile-light.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     width: 100%;
@@ -24,7 +24,7 @@
     }
 
     @media (min-width: 500px) {
-        background-image: url('../assets/bg-desktop-light.jpg');
+        background-image: url('../../../public/assets/bg-desktop-light.jpg');
 
         h1{
             font-size: 2.3rem;

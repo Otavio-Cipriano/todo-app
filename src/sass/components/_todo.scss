@@ -1,9 +1,10 @@
 .todo {
   width: 90%;
-  max-width: 500px;
+  max-width: 550px;
   margin: -6.5rem auto;
   color: var(--lightTheme-dark-gray-blue);
   font-size: 1rem;
+  padding: 0 0 1rem 0;
 
   &__list,
   &__creator,
@@ -15,24 +16,46 @@
 
   &__creator {
     margin-bottom: 1rem;
-    display: flex;
+    display: grid;
+    align-items: center;
+    grid-template-columns: 0.3fr 1.7fr 1fr;
     padding: 1rem;
     
     input[type="text"] {
-      display: none;
+      border: none;
+      outline: none;
+      height: 100%;
+      width: 100%;
+      caret-color: var(--primary-roya-blue);
+
+      &:focus{
+        border: none;
+      }
     }
 
     .cb{
       margin-top: -1rem;
       margin-right: 10px;
     }
+
+    >span{
+      margin-right: 1rem;
+    }
+  }
+
+  &__list{
+    position: relative;
+    min-height: 400px;
   }
 
   &__info {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
-    padding: 1rem 1.5rem;
+    padding: 1rem;
 
     span:last-child {
       justify-self: end;
@@ -40,7 +63,6 @@
   }
 
   &__filter {
-    margin: 2rem 0;
     display: grid;
     grid-template-columns: auto auto auto;
     padding: 1.2rem 1rem 1rem 1rem;
@@ -50,16 +72,41 @@
     > * {
       margin: 0 0.8rem;
     }
+
+    &-mobile{
+      margin: 2rem 0;
+    }
+
+    &-desktop{
+      box-shadow: none;
+      padding: none;
+      display: none;
+    }
   }
 
 
   @media (min-width: 500px) {
     margin: -7rem auto;
   }
+
+  @media(min-width: 1000px){
+    &__info{
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+    &__filter {
+      &-desktop{
+        display: grid;
+      }
+
+      &-mobile{
+        display: none;
+      }
+    }
+  }
 }
 
 .task {
-  padding: 1.2rem 1rem;
+  padding: 1.3rem 1rem;
   display: flex;
   border-bottom: 1px solid var(--lightTheme-light-gray-blue);
   align-items: center;
@@ -94,4 +141,5 @@
 
 .lower-message{
   text-align: center;
+  margin: 3rem 0;
 }
