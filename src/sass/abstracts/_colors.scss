@@ -1,22 +1,16 @@
 $colors: (
-    primary: (
-        "roya-blue": hsl(220, 98%, 61%),
-        "check-bg": linear-gradient(133deg, hsl(192, 100%, 67%), hsl(280, 87%, 65%))
-    ),
-    lightTheme: (
+        "royal-blue": hsl(220, 98%, 61%),
+        "gradient-bg": linear-gradient(133deg, hsl(192, 100%, 67%), hsl(280, 87%, 65%)),
         "light-gray": hsl(0, 0%, 98%),
         "light-gray-blue": hsl(236, 33%, 92%),
         "gray-blue": hsl(233, 11%, 84%),
         "dark-gray-blue": hsl(236, 9%, 61%),
-        "darker-gray-blue": hsl(235, 19%, 35%)
-    ),
-    darkTheme: (
+        "darker-gray-blue": hsl(235, 19%, 35%),
         "dark-blue": hsl(235, 21%, 11%),
         "dark-desaturated-blue": hsl(235, 24%, 19%),
-        "light-gray-blue": hsl(234, 39%, 85%),
+        "light-gray-blue2": hsl(234, 39%, 85%),
         "light-gray-blue-hover": hsl(236, 33%, 92%),
-        "dark-gray-blue": hsl(234, 11%, 52%),
-        "darker-gray-blue": hsl(233, 14%, 35%),
-        "darkest-gray-blue": hsl(237, 14%, 26%)        
-    )
+        "dark-gray-blue2": hsl(234, 11%, 52%),
+        "darker-gray-blue2": hsl(233, 14%, 35%),
+        "darkest-gray-blue": hsl(237, 14%, 26%)
 );

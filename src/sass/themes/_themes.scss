@@ -1,0 +1,15 @@
+@use './dark' as *;
+@use './light' as *;
+
+$themes: (
+    dark: $dark,
+    light: $light
+);
+
+@mixin themify($prop, $key) {
+    @each $theme, $color in $themes {
+        &.#{$theme}{
+            #{$prop}: map-get($color, $key);
+        }
+    }
+};

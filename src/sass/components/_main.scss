@@ -1,0 +1,6 @@
+@use '../themes' as *;
+
+.main{
+    min-height: 100vh;
+    @include themify('background-color', 'primary-bgclr')
+}
