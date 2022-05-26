@@ -10,6 +10,7 @@ $themes: (
     @each $theme, $color in $themes {
         &.#{$theme}{
             #{$prop}: map-get($color, $key);
+            transition: 0.2s ease;
         }
     }
 };

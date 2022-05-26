@@ -1,11 +1,10 @@
-import React, { useContext } from 'react'
-import { ThemeContext } from '../../contexts/ThemeContext'
+import { useTheme } from '../../contexts/ThemeContext'
 
 export default function Container({ children }) {
 
-    const {globalTheme} = useContext(ThemeContext)
+    const { theme } = useTheme()
 
     return (
-        <main className={`container main ${globalTheme}`}>{children}</main>
+        <main className={`container main ${theme}`}>{children}</main>
     )
 }

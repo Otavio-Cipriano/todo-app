@@ -1,6 +1,7 @@
 .theme-btn{
-
-    &__sun{
-        display: none;
+    cursor: pointer;
+    
+    :hover{
+        transform: scale(1.07);
     }
 }

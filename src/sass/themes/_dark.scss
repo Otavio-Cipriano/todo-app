@@ -6,5 +6,7 @@ $dark: (
     neutral-ftclr: white,
     primary-bgclr: var(--dark-blue),
     second-bgclr: var(--dark-desaturated-blue),
-    gradient:  var(--gradient-bg)
+    gradient:  var(--gradient-bg),
+    mb-header-img:  url('../../../public/assets/bg-mobile-dark.jpg'),
+    dk-header-img:  url('../../../public/assets/bg-desktop-dark.jpg')
 );

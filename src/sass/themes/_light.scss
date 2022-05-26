@@ -6,5 +6,7 @@ $light: (
     neutral-ftclr: white,
     primary-bgclr: var(--light-gray),
     second-bgclr: white,
-    gradient:  var(--gradient-bg)
+    gradient:  var(--gradient-bg),
+    mb-header-img:  url('../../../public/assets/bg-mobile-light.jpg'),
+    dk-header-img:  url('../../../public/assets/bg-desktop-light.jpg')
 )

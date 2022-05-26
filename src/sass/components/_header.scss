@@ -1,5 +1,8 @@
+@use '../themes' as *;
+
 .header{
-    background-image: url('../../../public/assets/bg-mobile-light.jpg');
+    // background-image: url('../../../public/assets/bg-mobile-light.jpg');
+    @include themify('background-image', 'mb-header-img');
     background-repeat: no-repeat;
     background-size: cover;
     width: 100%;
@@ -24,7 +27,7 @@
     }
 
     @media (min-width: 500px) {
-        background-image: url('../../../public/assets/bg-desktop-light.jpg');
+        @include themify('background-image', 'dk-header-img');
 
         h1{
             font-size: 2.3rem;
