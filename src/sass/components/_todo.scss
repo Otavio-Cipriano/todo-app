@@ -1,15 +1,17 @@
-.todo {
+@use "../themes/" as *;
+
+.todo-app {
   width: 90%;
   max-width: 550px;
   margin: -6.5rem auto;
-  color: var(--lightTheme-dark-gray-blue);
+  @include themify("color", "primary-ftclr");
   font-size: 1rem;
   padding: 0 0 1rem 0;
-  
+
   &__list,
   &__creator,
   &__filter {
-    background-color: white;
+    @include themify("background-color", "second-bgclr");
     border-radius: 5px;
     box-shadow: 0 1px 20px rgb(0 0 0 / 16%);
   }
@@ -20,30 +22,31 @@
     align-items: center;
     grid-template-columns: 0.3fr 1.7fr 1fr;
     padding: 1rem;
-    
+
     input[type="text"] {
       border: none;
       outline: none;
       height: 100%;
       width: 100%;
-      caret-color: var(--primary-roya-blue);
+      caret-color: var(--royal-blue);
+      background-color: transparent;
 
-      &:focus{
+      &:focus {
         border: none;
       }
     }
 
-    .cb{
+    .cb {
       margin-top: -1rem;
       margin-right: 10px;
     }
 
-    >span{
+    > span {
       margin-right: 1rem;
     }
   }
 
-  &__list{
+  &__list {
     position: relative;
     min-height: 400px;
   }
@@ -73,32 +76,31 @@
       margin: 0 0.8rem;
     }
 
-    &-mobile{
+    &-mobile {
       margin: 2rem 0;
     }
 
-    &-desktop{
+    &-desktop {
       box-shadow: none;
       padding: none;
       display: none;
     }
   }
 
-
   @media (min-width: 500px) {
     margin: -7rem auto;
   }
 
-  @media(min-width: 1000px){
-    &__info{
+  @media (min-width: 1000px) {
+    &__info {
       grid-template-columns: 1fr 1fr 1fr;
     }
     &__filter {
-      &-desktop{
+      &-desktop {
         display: grid;
       }
 
-      &-mobile{
+      &-mobile {
         display: none;
       }
     }
@@ -113,13 +115,22 @@
 
   &__text {
     width: 100%;
-    color: var(--lightTheme-darker-gray-blue);
+    @include themify("color", "second-ftclr");
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 
   &__trash {
     max-width: 13px;
     img {
       width: 100%;
+    }
+
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.2);
     }
   }
 
@@ -132,14 +143,13 @@
     color: var(--lightTheme-gray-blue) !important;
   }
 
-  .cb{
+  .cb {
     margin-right: 10px;
-  }
 
+  }
 }
 
-
-.lower-message{
+.lower-message {
   text-align: center;
   margin: 3rem 0;
 }

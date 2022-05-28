@@ -7,10 +7,15 @@ export function useTodo(){
 }
 
 export default function TodoContextParent({ children }) {
-    const [todoList, setTodoList] = useState([])
+    const [todoList, setTodoList] = useState([
+        {
+            text: 'Something Something Something',
+            state: 'Active'
+        }
+    ])
 
     const addNewTodo = ({newTodo}) =>{
-        return setTodoList(prevTodoList => {
+        setTodoList(prevTodoList => {
             return [newTodo, ...prevTodoList]
         })
     }

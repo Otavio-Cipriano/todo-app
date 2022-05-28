@@ -1,13 +1,26 @@
 import React from 'react'
+import { useTheme } from '../../contexts/ThemeContext'
+import { useTodo } from '../../contexts/TodoContext'
+import Todo from '../Todo/Todo'
 import TodoFilter from '../TodoFilter/TodoFilter'
 
 export default function TodoList() {
-    return (
-        <div className='todo__list'>
+    const {theme}= useTheme()
+    const { todoList } = useTodo()
 
-            <div className="todo__info">
+    return (
+        <div className={`todo-app__list ${theme}`}>
+            {
+                todoList?.map((todo, idx) =>{
+                    return(
+                        <Todo key={idx} text={todo.text}/>
+                    )
+                })
+            }
+
+            <div className="todo-app__info">
                 <span>X items left</span>
-                <TodoFilter className="todo__filter todo__filter-desktop"/>
+                <TodoFilter className="todo-app__filter todo-app__filter-desktop"/>
                 <span>Clear Completed</span>
             </div>
         </div>
