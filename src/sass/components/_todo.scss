@@ -110,7 +110,7 @@
 .task {
   padding: 1.3rem 1rem;
   display: flex;
-  border-bottom: 1px solid var(--lightTheme-light-gray-blue);
+  border-bottom: 1px solid var(--light-gray-blue);
   align-items: center;
 
   &__text {
@@ -134,13 +134,13 @@
     }
   }
 
-  &-completed {
+  &--completed {
     text-decoration: line-through;
-    color: var(--lightTheme-gray-blue) !important;
+    @include themify("color", "primary-ftclr");
   }
 
-  &-completed &__text {
-    color: var(--lightTheme-gray-blue) !important;
+  &--completed &__text {
+    @include themify("color", "primary-ftclr");
   }
 
   .cb {

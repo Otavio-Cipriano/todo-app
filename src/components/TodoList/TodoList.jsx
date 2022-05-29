@@ -13,7 +13,7 @@ export default function TodoList() {
             {
                 todoList?.map((todo, idx) =>{
                     return(
-                        <Todo key={idx} text={todo.text}/>
+                        <Todo key={idx} text={todo.text} state={todo.state}/>
                     )
                 })
             }
