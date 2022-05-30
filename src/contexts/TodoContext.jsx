@@ -24,6 +24,13 @@ export default function TodoContextParent({ children }) {
     }
 
     useEffect(()=>{
+        if(filter === 'all') setFTodoList(todoList);
+        else{
+            setFTodoList(todoList.filter(e => e.state === filter))
+        }
+    },[todoList, filter])
+
+    useEffect(()=>{
         const countActiveTodo = () =>{
             setActiveTodo(() =>{
                 let actives = todoList.filter(e => e.state === 'active')
@@ -31,12 +38,7 @@ export default function TodoContextParent({ children }) {
             })
         }
         countActiveTodo()
-        if(filter === 'all') setFTodoList(todoList);
-        else{
-            setFTodoList(todoList.filter(e => e.state === filter))
-        }
-        console.log(fTodoList)
-    },[todoList, filter, fTodoList])
+    },[todoList])
 
     const value = {
         fTodoList,

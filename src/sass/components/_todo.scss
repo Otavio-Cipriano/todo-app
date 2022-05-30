@@ -86,6 +86,10 @@
       display: none;
     }
 
+    span{
+      cursor: pointer;
+    }
+
     .active{
       color: var(--royal-blue)
     }
