@@ -1,27 +1,34 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useTheme } from '../../contexts/ThemeContext'
+import { useTodo } from '../../contexts/TodoContext'
 
-export default function Todo({text, state}) {
-  const [active, setActive] = useState(state === 'completed' ? true : false)
+export default function Todo({todo}) {
+  const [active, setActive] = useState(todo.state === "completed" ? true : false)
   const {theme} = useTheme()
-  console.log(state)
+  const { removeTodo } = useTodo()
+  // const cbRef = useRef(null)
 
   const handleOnChange = () =>{
-    setActive(!active)
+    if(active) todo.state = 'active'
+    else todo.state = 'completed'
+  }
+
+  const handleOnClick = () =>{
+    removeTodo(todo.id)
   }
 
   return (
-    <div className={`task ${theme} ${active ? 'task--completed' : ''}`}>
+    <div className={`task ${theme} ${todo.state === "completed" ? true : false ? 'task--completed' : ''}`}>
       <div className={`task__cb `}>
         <label className="task__cb cb">
-          <input type="checkbox" value={state} checked={active} onChange={handleOnChange}/>
+          <input type="checkbox" value={todo.state} checked={todo.state === "completed" ? true : false} onChange={handleOnChange} />
             <span className="cb__checkmark"></span>
         </label>
       </div>
       <p className={`task__text ${theme}`}>
-        {text}
+        {todo.text}
       </p>
-      <div className="task__trash">
+      <div className="task__trash" onClick={handleOnClick}>
         <img src="assets/icon-cross.svg" alt="delete icon"/>
       </div>
     </div>

@@ -85,6 +85,10 @@
       padding: none;
       display: none;
     }
+
+    .active{
+      color: var(--royal-blue)
+    }
   }
 
   @media (min-width: 500px) {

@@ -6,20 +6,20 @@ import TodoFilter from '../TodoFilter/TodoFilter'
 
 export default function TodoList() {
     const {theme}= useTheme()
-    const { todoList } = useTodo()
+    const { fTodoList, activeTodo } = useTodo()
 
     return (
         <div className={`todo-app__list ${theme}`}>
             {
-                todoList?.map((todo, idx) =>{
+                fTodoList?.map((todo, idx) =>{
                     return(
-                        <Todo key={idx} text={todo.text} state={todo.state}/>
+                        <Todo key={idx} todo={todo}/>
                     )
                 })
             }
 
             <div className="todo-app__info">
-                <span>X items left</span>
+                <span>{activeTodo} items left</span>
                 <TodoFilter className="todo-app__filter todo-app__filter-desktop"/>
                 <span>Clear Completed</span>
             </div>

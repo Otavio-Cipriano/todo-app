@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react"
+import { createContext, useContext, useEffect, useState } from "react"
 
 const TodoContext = createContext()
 
@@ -8,8 +8,9 @@ export function useTodo() {
 
 export default function TodoContextParent({ children }) {
     const [todoList, setTodoList] = useState([])
+    const [activeTodo, setActiveTodo ] = useState()
     const [filter, setFilter] = useState('all')
-    const [filtredTodoList, setFiltredTodoList] = useState([])
+    const [fTodoList, setFTodoList] = useState([])
 
     const addNewTodo = (newTodo) => {
         setTodoList(prevTodoList => {
@@ -17,15 +18,33 @@ export default function TodoContextParent({ children }) {
         })
     }
 
-    // const removeTodo = (id) =>{
-    //     todoList.splice(todoList.findIndex((el) =>{ return el.id === id}))
-    // }
+
+    const removeTodo = (id) =>{
+        setTodoList(todoList.filter(e => e.id !== id))
+    }
+
+    useEffect(()=>{
+        const countActiveTodo = () =>{
+            setActiveTodo(() =>{
+                let actives = todoList.filter(e => e.state === 'active')
+                return actives.length
+            })
+        }
+        countActiveTodo()
+        if(filter === 'all') setFTodoList(todoList);
+        else{
+            setFTodoList(todoList.filter(e => e.state === filter))
+        }
+        console.log(fTodoList)
+    },[todoList, filter, fTodoList])
 
     const value = {
-        todoList,
+        fTodoList,
         filter,
         setFilter,
-        addNewTodo
+        addNewTodo, 
+        removeTodo,
+        activeTodo
     }
 
     return (

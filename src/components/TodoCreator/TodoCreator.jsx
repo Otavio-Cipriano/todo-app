@@ -1,6 +1,7 @@
 import { useRef } from "react"
 import { useTheme } from "../../contexts/ThemeContext"
 import { useTodo } from "../../contexts/TodoContext"
+import { v4 as uuidv4 } from 'uuid';
 
 export default function TodoCreator() {
     const { theme } = useTheme()
@@ -14,14 +15,23 @@ export default function TodoCreator() {
         }
     }
 
-    const createTodo = () =>{
-        let todo = {}
-        todo.state = cbRef.current.checked ? 'completed' : 'active'
-        todo.text = textRef.current.value
-        addNewTodo(todo)
-        todo = {}
+    const cleanCreator = () =>{
         textRef.current.value = ''
         cbRef.current.checked = false
+    }
+
+    const createTodo = () =>{
+        if(!textRef.current.value) return;
+        let todo = {
+            id: uuidv4(),
+            text: textRef.current.value,
+            state: cbRef.current.checked ? 'completed' : 'active'
+        }
+        addNewTodo(todo)
+        todo = {}
+        cleanCreator()
+
+
     }
 
     return (
