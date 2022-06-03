@@ -6,7 +6,7 @@ import TodoFilter from '../TodoFilter/TodoFilter'
 
 export default function TodoList() {
     const {theme}= useTheme()
-    const { fTodoList, activeTodo } = useTodo()
+    const { fTodoList, activeTodo, clearCompletedTodo } = useTodo()
 
     return (
         <div className={`todo-app__list ${theme}`}>
@@ -21,7 +21,7 @@ export default function TodoList() {
             <div className="todo-app__info">
                 <span>{activeTodo} items left</span>
                 <TodoFilter className="todo-app__filter todo-app__filter-desktop"/>
-                <span>Clear Completed</span>
+                <span onClick={clearCompletedTodo}>Clear Completed</span>
             </div>
         </div>
     )

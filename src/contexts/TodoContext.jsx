@@ -1,4 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react"
+import useLocalStorage from "../hooks/useLocalStorage"
 
 const TodoContext = createContext()
 
@@ -7,8 +8,10 @@ export function useTodo() {
 }
 
 export default function TodoContextParent({ children }) {
-    const [todoList, setTodoList] = useState([])
-    const [activeTodo, setActiveTodo ] = useState()
+    const { storage, saveAtLocalStorage } = useLocalStorage()
+
+    const [todoList, setTodoList] = useState(storage ? storage : [])
+    const [activeTodo, setActiveTodo] = useState()
     const [filter, setFilter] = useState('all')
     const [fTodoList, setFTodoList] = useState([])
 
@@ -18,35 +21,44 @@ export default function TodoContextParent({ children }) {
         })
     }
 
-
-    const removeTodo = (id) =>{
+    const removeTodo = (id) => {
         setTodoList(todoList.filter(e => e.id !== id))
     }
 
-    useEffect(()=>{
-        if(filter === 'all') setFTodoList(todoList);
-        else{
+    const clearCompletedTodo = () => {
+        if(todoList.length > 0) {
+            setTodoList(prevTodoList => {
+                return prevTodoList.filter(todo => todo.state !== 'completed')
+            })
+        }
+    }
+
+    useEffect(() => {
+        if (filter === 'all') setFTodoList(todoList);
+        else {
             setFTodoList(todoList.filter(e => e.state === filter))
         }
-    },[todoList, filter])
+        saveAtLocalStorage(todoList)
+    }, [todoList, filter, saveAtLocalStorage])
 
-    useEffect(()=>{
-        const countActiveTodo = () =>{
-            setActiveTodo(() =>{
+    useEffect(() => {
+        const countActiveTodo = () => {
+            setActiveTodo(() => {
                 let actives = todoList.filter(e => e.state === 'active')
                 return actives.length
             })
         }
         countActiveTodo()
-    },[todoList])
+    }, [todoList])
 
     const value = {
         fTodoList,
         filter,
         setFilter,
-        addNewTodo, 
+        addNewTodo,
         removeTodo,
-        activeTodo
+        activeTodo,
+        clearCompletedTodo
     }
 
     return (
