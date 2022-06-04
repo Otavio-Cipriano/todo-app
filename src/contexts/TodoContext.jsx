@@ -25,6 +25,30 @@ export default function TodoContextParent({ children }) {
         setTodoList(todoList.filter(e => e.id !== id))
     }
 
+    const setTodoAsCompleted = (id) =>{
+        let newTodoList = todoList.map(todo =>{
+            if(todo.id === id){
+                todo.state = 'completed'
+                return todo
+            }else{
+                return todo
+            }
+        });
+        setTodoList(newTodoList)
+    }
+
+    const setTodoAsActive = (id) =>{
+        let newTodoList = todoList.map(todo =>{
+            if(todo.id === id){
+                todo.state = 'active'
+                return todo
+            }else{
+                return todo
+            }
+        });
+        setTodoList(newTodoList)
+    }
+
     const clearCompletedTodo = () => {
         if(todoList.length > 0) {
             setTodoList(prevTodoList => {
@@ -39,6 +63,7 @@ export default function TodoContextParent({ children }) {
             setFTodoList(todoList.filter(e => e.state === filter))
         }
         saveAtLocalStorage(todoList)
+        
     }, [todoList, filter, saveAtLocalStorage])
 
     useEffect(() => {
@@ -58,7 +83,9 @@ export default function TodoContextParent({ children }) {
         addNewTodo,
         removeTodo,
         activeTodo,
-        clearCompletedTodo
+        clearCompletedTodo,
+        setTodoAsCompleted,
+        setTodoAsActive
     }
 
     return (

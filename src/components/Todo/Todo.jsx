@@ -1,34 +1,38 @@
-import React, { useEffect, useRef, useState } from 'react'
 import { useTheme } from '../../contexts/ThemeContext'
 import { useTodo } from '../../contexts/TodoContext'
 
 export default function Todo({todo}) {
-  const [active, setActive] = useState(todo.state === "completed" ? true : false)
   const {theme} = useTheme()
-  const { removeTodo } = useTodo()
-  // const cbRef = useRef(null)
+  const { removeTodo, setTodoAsCompleted, setTodoAsActive } = useTodo()
 
-  const handleOnChange = () =>{
-    if(active) todo.state = 'active'
-    else todo.state = 'completed'
+  const check = () =>{
+    setTodoAsCompleted(todo.id)
   }
 
-  const handleOnClick = () =>{
+  const uncheck = () => {
+    setTodoAsActive(todo.id)
+  }
+
+  const handleTrashClick = () =>{
     removeTodo(todo.id)
   }
 
   return (
-    <div className={`task ${theme} ${todo.state === "completed" ? true : false ? 'task--completed' : ''}`}>
+    <div className={`task ${theme} ${todo.state === "completed" ? 'task--completed' : ''}`}>
       <div className={`task__cb `}>
-        <label className="task__cb cb">
-          <input type="checkbox" value={todo.state} checked={todo.state === "completed" ? true : false} onChange={handleOnChange} />
+        <label className="task__cb cb" >
+          {
+            todo.state === "completed" ?
+            <input type="checkbox" value={todo.state} checked={true} readOnly onClick={uncheck}/> :
+            <input type="checkbox" value={todo.state} checked={false} readOnly onClick={check}/>
+          }
             <span className="cb__checkmark"></span>
         </label>
       </div>
       <p className={`task__text ${theme}`}>
         {todo.text}
       </p>
-      <div className="task__trash" onClick={handleOnClick}>
+      <div className="task__trash" onClick={handleTrashClick}>
         <img src="assets/icon-cross.svg" alt="delete icon"/>
       </div>
     </div>
