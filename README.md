@@ -16,9 +16,9 @@
 - User can change Theme between Light or Dark
 
 ## Built With
-- ReactJs
-- SASS
-- Context Api
+- [ReactJs](https://reactjs.org/)
+- [SASS](https://sass-lang.com/)
+- [React Context API](https://pt-br.reactjs.org/docs/context.html)
 
 ## Author
 
