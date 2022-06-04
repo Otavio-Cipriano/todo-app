@@ -9,7 +9,6 @@ export function useTodo() {
 
 export default function TodoContextParent({ children }) {
     const { storage, saveAtLocalStorage } = useLocalStorage()
-
     const [todoList, setTodoList] = useState(storage ? storage : [])
     const [activeTodo, setActiveTodo] = useState()
     const [filter, setFilter] = useState('all')
