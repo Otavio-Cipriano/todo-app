@@ -20,6 +20,27 @@
 - [SASS](https://sass-lang.com/)
 - [React Context API](https://pt-br.reactjs.org/docs/context.html)
 
+## Running the Application
+
+Yarn need to be installed to run the application
+
+To install yarn just run:
+
+```
+npm install --global yarn
+```
+after that you're going to need to install the dependencies in package.json
+
+```
+yarn install
+```
+
+so finally to run
+
+```
+yarn start
+```
+
 ## Author
 
 Made by [@Otavio-Cipriano](https://github.com/Otavio-Cipriano) 🤖
