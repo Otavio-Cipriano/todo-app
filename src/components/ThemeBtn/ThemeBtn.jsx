@@ -1,4 +1,4 @@
-import { useTheme, DARK_THEME } from '../../contexts/ThemeContext'
+import { useTheme } from '../../contexts/ThemeContext'
 
 export default function ThemeBtn() {
     const { theme, changeTheme } = useTheme()
