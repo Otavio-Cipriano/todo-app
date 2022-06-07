@@ -1,4 +1,3 @@
-import React, { useState } from 'react'
 import { useTheme } from '../../contexts/ThemeContext'
 import { useTodo } from '../../contexts/TodoContext'
 import Todo from '../Todo/Todo'

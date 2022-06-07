@@ -56,9 +56,6 @@ export default function TodoContextParent({ children }) {
         }
     }
 
-    const reOrderTodo = (newOrderTodo) => {
-        setTodoList(newOrderTodo)
-    }
 
     useEffect(() => {
         if (filter === 'all') setFTodoList(todoList);
@@ -66,7 +63,8 @@ export default function TodoContextParent({ children }) {
             setFTodoList(todoList.filter(e => e.state === filter))
         }
         saveAtLocalStorage(todoList)
-        
+
+        // eslint-disable-next-line
     }, [todoList, filter])
 
     useEffect(() => {
@@ -88,8 +86,7 @@ export default function TodoContextParent({ children }) {
         activeTodo,
         clearCompletedTodo,
         setTodoAsCompleted,
-        setTodoAsActive,
-        reOrderTodo
+        setTodoAsActive
     }
 
     return (
