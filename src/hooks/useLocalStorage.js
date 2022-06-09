@@ -1,17 +1,16 @@
 import { useState } from "react"
 
-const Key = 'TODOLIST'
 
-export default function useLocalStorage() {
+export default function useLocalStorage(key) {
     const [storage, setStorage] = useState(() =>{
-        let data = JSON.parse(localStorage.getItem(Key))
+        let data = JSON.parse(localStorage.getItem(key))
         if(data) return data
         else return null
     })
 
     const saveAtLocalStorage = (data) => {
         let stringfyData = JSON.stringify(data)
-        localStorage.setItem(Key, stringfyData)
+        localStorage.setItem(key, stringfyData)
         setStorage(data)
     }
 

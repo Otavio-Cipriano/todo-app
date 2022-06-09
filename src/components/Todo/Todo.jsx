@@ -1,16 +1,17 @@
 import { useTheme } from '../../contexts/ThemeContext'
 import { useTodo } from '../../contexts/TodoContext'
+import crossIcon from '../../assets/images/icon-cross.svg'
 
 export default function Todo({ todo, ...props }) {
   const { theme } = useTheme()
-  const { removeTodo, setTodoAsCompleted, setTodoAsActive } = useTodo()
+  const { removeTodo, udpateTodoState } = useTodo()
 
   const check = () => {
-    setTodoAsCompleted(todo.id)
+    udpateTodoState(todo.id, 'completed')
   }
 
   const uncheck = () => {
-    setTodoAsActive(todo.id)
+    udpateTodoState(todo.id, 'active')
   }
 
   const handleTrashClick = () => {
@@ -34,7 +35,7 @@ export default function Todo({ todo, ...props }) {
         {todo.text}
       </p>
       <div className="task__trash" onClick={handleTrashClick}>
-        <img src="assets/icon-cross.svg" alt="delete icon" />
+        <img src={crossIcon} alt="delete icon" />
       </div>
     </div>
   )

@@ -1,3 +1,4 @@
+import { useFilter } from '../../contexts/FilterContext'
 import { useTheme } from '../../contexts/ThemeContext'
 import { useTodo } from '../../contexts/TodoContext'
 import Todo from '../Todo/Todo'
@@ -5,12 +6,13 @@ import TodoFilter from '../TodoFilter/TodoFilter'
 
 export default function TodoList() {
     const { theme } = useTheme()
-    const { fTodoList, activeTodo, clearCompletedTodo } = useTodo()
+    const { activeTodo, clearCompletedTodo } = useTodo()
+    const { filtredTodos } = useFilter()
 
     return (
         <div className={`todo-app__list ${theme}`} >
             {
-                fTodoList?.map((todo, idx) => {
+                filtredTodos?.map((todo, idx) => {
                     return (
                         <Todo
                             id={idx}

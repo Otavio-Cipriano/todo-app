@@ -1,9 +1,9 @@
+import { useFilter } from "../../contexts/FilterContext"
 import { useTheme } from "../../contexts/ThemeContext"
-import { useTodo } from "../../contexts/TodoContext"
 
 export default function TodoFilter({ ...props }) {
     const { theme } = useTheme()
-    const { setFilter, filter } = useTodo()
+    const { setFilter, filter } = useFilter()
 
     const handleOnClick = (fOption) => {
         setFilter(fOption)

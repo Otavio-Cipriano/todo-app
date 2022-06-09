@@ -8,85 +8,60 @@ export function useTodo() {
 }
 
 export default function TodoContextParent({ children }) {
-    const { storage, saveAtLocalStorage } = useLocalStorage()
-    const [todoList, setTodoList] = useState(storage ? storage : [])
+    const { storage, saveAtLocalStorage } = useLocalStorage('TODOLIST')
+    const [todos, setTodos] = useState(storage ? storage : [])
     const [activeTodo, setActiveTodo] = useState()
-    const [filter, setFilter] = useState('all')
-    const [fTodoList, setFTodoList] = useState([])
 
     const addNewTodo = (newTodo) => {
-        setTodoList(prevTodoList => {
+        setTodos(prevTodoList => {
             return [newTodo, ...prevTodoList]
         })
     }
 
     const removeTodo = (id) => {
-        setTodoList(todoList.filter(e => e.id !== id))
+        setTodos(todos.filter(e => e.id !== id))
     }
 
-    const setTodoAsCompleted = (id) =>{
-        let newTodoList = todoList.map(todo =>{
-            if(todo.id === id){
-                todo.state = 'completed'
+    const udpateTodoState = (id, state) => {
+        let newTodoList = todos.map(todo => {
+            if (todo.id === id) {
+                todo.state = state
                 return todo
-            }else{
+            } else {
                 return todo
             }
         });
-        setTodoList(newTodoList)
-    }
-
-    const setTodoAsActive = (id) =>{
-        let newTodoList = todoList.map(todo =>{
-            if(todo.id === id){
-                todo.state = 'active'
-                return todo
-            }else{
-                return todo
-            }
-        });
-        setTodoList(newTodoList)
+        setTodos(newTodoList)
     }
 
     const clearCompletedTodo = () => {
-        if(todoList.length > 0) {
-            setTodoList(prevTodoList => {
+        if (todos.length > 0) {
+            setTodos(prevTodoList => {
                 return prevTodoList.filter(todo => todo.state !== 'completed')
             })
         }
     }
 
-
-    useEffect(() => {
-        if (filter === 'all') setFTodoList(todoList);
-        else {
-            setFTodoList(todoList.filter(e => e.state === filter))
-        }
-        saveAtLocalStorage(todoList)
-
-        // eslint-disable-next-line
-    }, [todoList, filter])
-
     useEffect(() => {
         const countActiveTodo = () => {
             setActiveTodo(() => {
-                let actives = todoList.filter(e => e.state === 'active')
+                let actives = todos.filter(e => e.state === 'active')
                 return actives.length
             })
         }
         countActiveTodo()
-    }, [todoList])
+        saveAtLocalStorage(todos)
+
+        // eslint-disable-next-line
+    }, [todos])
 
     const value = {
-        fTodoList,
-        filter,
-        setFilter,
         addNewTodo,
         removeTodo,
         activeTodo,
         clearCompletedTodo,
-        setTodoAsCompleted,
-        setTodoAsActive
+        udpateTodoState,
+        todos
     }
 
     return (
