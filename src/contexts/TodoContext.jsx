@@ -42,6 +42,24 @@ export default function TodoContextParent({ children }) {
         }
     }
 
+    const reOrderTodo = (dragId, dropId) => {
+       const dragTodo = todos.find((todo) => todo.id === Number(dragId))
+       const dropTodo = todos.find((todo) => todo.id === Number(dropId))
+
+       const dragTodoOrder = dragTodo.order
+       const dropTodoOrder = dropTodo.order
+       console.log(dragTodo, dropTodo)
+       
+       const newTodosOrder = todos.map((todo) =>{
+           if(todo.id === Number(dragId)) todo.order = dropTodoOrder;
+           if(todo.id === Number(dropId)) todo.order = dragTodoOrder;
+
+           return todo;
+       })
+
+       setTodos(newTodosOrder);
+    }
+
     useEffect(() => {
         const countActiveTodo = () => {
             setActiveTodo(() => {
@@ -61,7 +79,8 @@ export default function TodoContextParent({ children }) {
         activeTodo,
         clearCompletedTodo,
         udpateTodoState,
-        todos
+        todos,
+        reOrderTodo
     }
 
     return (
