@@ -121,6 +121,7 @@
   display: flex;
   border-bottom: 1px solid var(--light-gray-blue);
   align-items: center;
+  animation: from-left 0.4s ease;
 
   &__text {
     width: 100%;
@@ -152,10 +153,26 @@
     @include themify("color", "primary-ftclr");
   }
 
+  &__deleting{
+    animation: fade-out 0.7s ease;
+  }
+
   .cb {
     margin-right: 10px;
 
   }
+
+  @keyframes from-left {
+    0%{
+      transform: translateX(-10%);
+      opacity: 0;
+    }
+    100%{
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
 }
 
 .lower-message {

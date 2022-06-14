@@ -14,13 +14,16 @@ export default function Todo({ todo, ...props }) {
     udpateTodoState(todo.id, 'active')
   }
 
-  const handleTrashClick = () => {
+  const deleteTodo = () => {
     removeTodo(todo.id)
   }
 
 
   return (
-    <div {...props} className={`task ${theme} ${todo.state === "completed" ? 'task--completed' : ''}`}>
+    <div {...props} 
+    className={`task 
+    ${theme} 
+    ${todo.state === "completed" ? 'task--completed' : ''}`}>
       <div className={`task__cb `}>
         <label className="task__cb cb" >
           {
@@ -34,7 +37,7 @@ export default function Todo({ todo, ...props }) {
       <p className={`task__text ${theme}`}>
         {todo.text}
       </p>
-      <div className="task__trash" onClick={handleTrashClick}>
+      <div className="task__trash" onClick={deleteTodo}>
         <img src={crossIcon} alt="delete icon" />
       </div>
     </div>
